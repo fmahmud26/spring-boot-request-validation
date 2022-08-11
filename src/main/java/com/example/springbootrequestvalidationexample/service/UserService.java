@@ -12,8 +12,12 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private final UserRepository repository;
+
     @Autowired
-    private UserRepository repository;
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public User saveUser(UserRequest req) {
         User user = User.build(0, req.getName(), req.getEmail(), req.getMobile(), req.getGender(), req.getAge(), req.getNationality());
